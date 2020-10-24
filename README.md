@@ -35,7 +35,20 @@ Though there are only 24 countries, your query should return 25 rows because the
 
 ---
 ## Queries
-
+- Q1 :
+```SQL
+SELECT BillingCountry, COUNT(*) AS invoices_number
+FROM Invoice
+GROUP BY 1
+ORDER BY 2 DESC
+```
+- Q2:
+```SQL
+SELECT BillingCountry, COUNT(*) AS invoices_number
+FROM Invoice
+GROUP BY 1
+ORDER BY 2 DESC
+```
 ---
 ## References
 
