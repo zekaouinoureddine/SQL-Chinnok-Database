@@ -126,8 +126,7 @@ WHERE Customers.cust_id = c.id_cst
 ---
 ### Author Infos
 - LinkedIn - [Nour Eddine ZEKAOUI](https://www.linkedin.com/in/nour-eddine-zekaoui-ba43b1177/)
-- View my verified achivemen [here](https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/ef8e84c5-9d1c-4825-9cbb-d2d82a844d2b.pdf) from [Udacity]
-(https://www.udacity.com/)
+- View my verified achivemen [here](https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/ef8e84c5-9d1c-4825-9cbb-d2d82a844d2b.pdf) from [Udacity](https://www.udacity.com/)
 
 ---
 
