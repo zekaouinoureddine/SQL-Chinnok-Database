@@ -122,4 +122,16 @@ WHERE Customers.cust_id = c.id_cst
 ```
 ---
 ## References
+- [Data Analyst Track](https://www.udacity.com/course/data-analyst-nanodegree--nd002)
+---
+### Author Infos
+- LinkedIn - [Nour Eddine ZEKAOUI](https://www.linkedin.com/in/nour-eddine-zekaoui-ba43b1177/)
+- View my verified achivemen [here](https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/ef8e84c5-9d1c-4825-9cbb-d2d82a844d2b.pdf) from [Udacity]
+(https://www.udacity.com/)
+
+---
+
+#### Thank you for your intrest ☻
+
+[Back To The Top](#sql-chinnok-database)
 
