@@ -44,10 +44,82 @@ ORDER BY 2 DESC
 ```
 - Q2:
 ```SQL
-SELECT BillingCountry, COUNT(*) AS invoices_number
+SELECT BillingCity, SUM(Total) AS invoices_total
 FROM Invoice
 GROUP BY 1
 ORDER BY 2 DESC
+LIMIT 1
+```
+- Q3:
+```SQL
+SELECT c.CustomerId,
+       c.FirstName,
+       c.LastName,
+       sum(inv.UnitPrice) as invoices
+FROM Invoice i
+JOIN InvoiceLine il
+ON il.Invoiceid = i.Invoiceid
+JOIN Customer c
+ON c.CustomerId = i.CustomerId
+GROUP BY 1,2,3
+ORDER BY i.Total DESC
+LIMIT 1
+```
+- Q4:
+```SQL
+SELECT c.Email,
+       c.FirstName,
+       c.LastName,
+       g.Name
+FROM Customer c
+JOIN Invoice i
+ON c.CustomerId= i.CustomerId
+JOIN InvoiceLine il
+ON i.InvoiceId= il.InvoiceId
+JOIN Track t
+ON t.TrackId = il.TrackId
+JOIN Genre g
+ON g.GenreId = t.GenreId
+WHERE g.Name = 'Rock'
+GROUP BY 1
+```
+- Q5:
+```SQL
+with c as(SELECT Invoice.CustomerId as id_cst, 
+                 Invoice.BillingCountry as Country, 
+                 SUM(Invoice.Total) as som 
+          FROM Invoice
+          JOIN Customer 
+          ON Invoice.BillingCountry = Customer.Country AND Invoice.CustomerId = Customer.CustomerId
+          GROUP BY 1,2
+          ORDER BY 2 ),
+          
+Customers as (SELECT Customer.CustomerId as cust_id, 
+                     Customer.FirstName as name_customer, 
+                     Customer.LastName as lastname_customer 
+              FROM Customer)
+
+SELECT customers.cust_id, 
+       customers.name_customer,
+       customers.lastname_customer, 
+       b.country, 
+       b.max_som 
+FROM Customers,
+(SELECT a.country as country, 
+        max(a.som) as max_som 
+ FROM (SELECT Invoice.CustomerId as id_cst, 
+              Invoice.BillingCountry as Country, 
+              SUM(Invoice.Total) as som 
+       FROM Invoice 
+       JOIN Customer 
+       ON Invoice.BillingCountry = Customer.Country AND Invoice.CustomerId = Customer.CustomerId
+       GROUP BY 1,2
+       ORDER BY 2 ) as a
+GROUP BY 1
+ORDER BY 2 ) as b
+JOIN c
+ON c.country = b.country AND c.som = b.max_som
+WHERE Customers.cust_id = c.id_cst
 ```
 ---
 ## References
