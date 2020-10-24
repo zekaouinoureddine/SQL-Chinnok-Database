@@ -13,7 +13,7 @@ In this lab, you will query the Chinook Database. The Chinook Database holds inf
 ---
 ## Chinnok Database
 Below you can see the Schema of Chinnok Database:
-![](chinnok.png)
+![](chinook.png)
 
 ---
 ## Instruction
