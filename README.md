@@ -1,4 +1,5 @@
 # SQL-Chinnok-Database
+Query the Chinook Database to help the team at Chinook music store understand the media in their store, their customers and employees, and their invoices information
 # Table of contents
 - [Introduction](#introduction)
 - [Chinnok Database](#chinnok-database)
