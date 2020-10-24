@@ -55,7 +55,7 @@ LIMIT 1
 SELECT c.CustomerId,
        c.FirstName,
        c.LastName,
-       sum(inv.UnitPrice) as invoices
+       sum(inv.UnitPrice) AS invoices
 FROM Invoice i
 JOIN InvoiceLine il
 ON il.Invoiceid = i.Invoiceid
@@ -85,18 +85,18 @@ GROUP BY 1
 ```
 - Q5:
 ```SQL
-with c as(SELECT Invoice.CustomerId as id_cst, 
-                 Invoice.BillingCountry as Country, 
-                 SUM(Invoice.Total) as som 
-          FROM Invoice
-          JOIN Customer 
-          ON Invoice.BillingCountry = Customer.Country AND Invoice.CustomerId = Customer.CustomerId
-          GROUP BY 1,2
-          ORDER BY 2 ),
+WITH c AS (SELECT Invoice.CustomerId AS id_cst, 
+                 Invoice.BillingCountry AS Country, 
+                 SUM(Invoice.Total) AS som 
+           FROM Invoice
+           JOIN Customer 
+           ON Invoice.BillingCountry = Customer.Country AND Invoice.CustomerId = Customer.CustomerId
+           GROUP BY 1,2
+           ORDER BY 2 ),
           
-Customers as (SELECT Customer.CustomerId as cust_id, 
-                     Customer.FirstName as name_customer, 
-                     Customer.LastName as lastname_customer 
+    Customers AS (SELECT Customer.CustomerId as cust_id, 
+                         Customer.FirstName as name_customer, 
+                         Customer.LastName as lastname_customer 
               FROM Customer)
 
 SELECT customers.cust_id, 
@@ -104,19 +104,18 @@ SELECT customers.cust_id,
        customers.lastname_customer, 
        b.country, 
        b.max_som 
-FROM Customers,
-(SELECT a.country as country, 
-        max(a.som) as max_som 
- FROM (SELECT Invoice.CustomerId as id_cst, 
-              Invoice.BillingCountry as Country, 
-              SUM(Invoice.Total) as som 
-       FROM Invoice 
-       JOIN Customer 
-       ON Invoice.BillingCountry = Customer.Country AND Invoice.CustomerId = Customer.CustomerId
-       GROUP BY 1,2
-       ORDER BY 2 ) as a
-GROUP BY 1
-ORDER BY 2 ) as b
+FROM Customers, (SELECT a.country AS country, 
+                        max(a.som) AS max_som 
+                 FROM (SELECT Invoice.CustomerId AS id_cst, 
+                              Invoice.BillingCountry AS Country, 
+                              SUM(Invoice.Total) AS som 
+                       FROM Invoice 
+                       JOIN Customer 
+                       ON Invoice.BillingCountry = Customer.Country AND Invoice.CustomerId = Customer.CustomerId
+                       GROUP BY 1,2
+                       ORDER BY 2 ) AS a
+                 GROUP BY 1
+                 ORDER BY 2 ) AS b
 JOIN c
 ON c.country = b.country AND c.som = b.max_som
 WHERE Customers.cust_id = c.id_cst
