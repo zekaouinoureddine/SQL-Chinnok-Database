@@ -130,7 +130,7 @@ WHERE Customers.cust_id = c.id_cst
 - View my verified achievement [here](https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/ef8e84c5-9d1c-4825-9cbb-d2d82a844d2b.pdf) from [Udacity](https://www.udacity.com/)
 
 ---
-
+What are you waiting for to enroll for the track and try it for yourself. You'll enjoy uncovering insights from data in an efficient way!
 #### Thank you for your intrest ☻
 
 [Back To The Top](#sql-chinnok-database)
